@@ -1,20 +1,11 @@
-package com.soteria.entity;
+package com.soteria.models;
 
 import javax.persistence.*;
 
 @javax.persistence.Entity
-@Table
 public class Entity {
     @Id
-    @SequenceGenerator(
-            name = "entity_sequence",
-            sequenceName = "entity_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "entity_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String url;

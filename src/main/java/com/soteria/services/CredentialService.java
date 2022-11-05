@@ -1,4 +1,4 @@
-package com.soteria.credential;
+package com.soteria.services;
 
 public class CredentialService {
 }

@@ -1,5 +1,6 @@
-package com.soteria.entity;
+package com.soteria.repositories;
 
+import com.soteria.models.Entity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

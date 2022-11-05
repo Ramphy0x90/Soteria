@@ -1,4 +1,4 @@
-package com.soteria.credential;
+package com.soteria.controllers;
 
 public class CredentialController {
 }

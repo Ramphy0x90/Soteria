@@ -1,5 +1,7 @@
-package com.soteria.entity;
+package com.soteria.services;
 
+import com.soteria.models.Entity;
+import com.soteria.repositories.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,10 @@ public class EntityService {
         }
 
         entityRepository.save(entity);
+    }
+
+    public void updateEntity() {
+
     }
 
     public void removeEntity(Long entityId) {
