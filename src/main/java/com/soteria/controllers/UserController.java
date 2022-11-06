@@ -3,7 +3,7 @@ package com.soteria.controllers;
 import com.soteria.models.Role;
 import com.soteria.models.User;
 import com.soteria.payload.JwtAuthenticationResponse;
-import com.soteria.payload.UserAuthO;
+import com.soteria.payload.UserDTO;
 import com.soteria.security.jwt.JwtTokenProvider;
 import com.soteria.services.RoleService;
 import com.soteria.services.UserService;
@@ -47,9 +47,9 @@ public class UserController {
     }
 
     @PostMapping("/log-in")
-    public ResponseEntity<JwtAuthenticationResponse> authenticateUser(@RequestBody UserAuthO userAuthO) {
+    public ResponseEntity<JwtAuthenticationResponse> authenticateUser(@RequestBody UserDTO userDTO) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                userAuthO.getUserName(), userAuthO.getPassword()
+                userDTO.getUserName(), userDTO.getPassword()
         ));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -59,10 +59,10 @@ public class UserController {
     }
 
     @PostMapping("sign-in")
-    public ResponseEntity<?> registerUser(@RequestBody UserAuthO userAuthO) {
+    public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         Role role = roleService.getRole("ROLE_STANDARD");
-        String userName = userAuthO.getUserName();
-        String password = passwordEncoder.encode(userAuthO.getPassword());
+        String userName = userDTO.getUserName();
+        String password = passwordEncoder.encode(userDTO.getPassword());
 
         User user = new User(userName, password, new ArrayList<>());
         user.setRole(role);
