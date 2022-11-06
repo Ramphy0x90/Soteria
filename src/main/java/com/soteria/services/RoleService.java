@@ -29,6 +29,10 @@ public class RoleService {
         return roleRepository.findById(id).orElseThrow(() -> new RoleNotFound(String.format("Role with ID: %s not found", id)));
     }
 
+    public Role getRole(String name) {
+        return roleRepository.findRoleByName(name).orElseThrow(() -> new RoleNotFound(String.format("Role with name: %s not found", name)));
+    }
+
     public Role addRole(Role role) {
         Optional<Role> checkRoleByName = roleRepository.findRoleByName(role.getName());
 
