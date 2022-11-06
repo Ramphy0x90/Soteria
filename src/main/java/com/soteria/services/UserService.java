@@ -1,8 +1,8 @@
 package com.soteria.services;
 
-import com.soteria.exceptions.EmptyPassword;
-import com.soteria.exceptions.UserAlreadyExists;
-import com.soteria.exceptions.UserNotFound;
+import com.soteria.exceptions.user.EmptyPassword;
+import com.soteria.exceptions.user.UserAlreadyExists;
+import com.soteria.exceptions.user.UserNotFound;
 import com.soteria.models.User;
 import com.soteria.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

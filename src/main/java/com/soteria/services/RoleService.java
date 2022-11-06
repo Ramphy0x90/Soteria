@@ -1,7 +1,7 @@
 package com.soteria.services;
 
-import com.soteria.exceptions.RoleAlreadyExists;
-import com.soteria.exceptions.RoleNotFound;
+import com.soteria.exceptions.role.RoleAlreadyExists;
+import com.soteria.exceptions.role.RoleNotFound;
 import com.soteria.models.Role;
 import com.soteria.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
