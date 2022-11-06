@@ -6,15 +6,20 @@ import com.soteria.models.Role;
 import com.soteria.repositories.RoleRepository;
 import com.soteria.models.User;
 import com.soteria.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
 public class DataConfig {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Bean
     CommandLineRunner commandLineRunner(EntityRepository entityRepository, RoleRepository roleRepository, UserRepository userRepository) {
         return args -> {
@@ -26,7 +31,11 @@ public class DataConfig {
             Role admin = new Role("ROLE_ADMIN");
             roleRepository.saveAll(List.of(standard, admin));
 
-            User user = new User("root", "toor", new ArrayList<>());
+            User user = new User(
+                    "root",
+                    passwordEncoder.encode("toor"),
+                    new ArrayList<>()
+            );
             user.setRole(admin);
             userRepository.save(user);
         };
