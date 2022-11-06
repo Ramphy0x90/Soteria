@@ -1,4 +1,4 @@
-package com.soteria.exceptions;
+package com.soteria.exceptions.user;
 
 public class UserNotFound extends RuntimeException {
     public UserNotFound(String message) {

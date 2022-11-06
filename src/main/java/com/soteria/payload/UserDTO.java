@@ -1,6 +1,6 @@
 package com.soteria.payload;
 
-public class UserAuthO {
+public class UserDTO {
     private String userName;
     private String password;
 
