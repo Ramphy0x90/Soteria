@@ -30,6 +30,11 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFound(String.format("User with ID: %s not found", id)));
     }
 
+    public User getUser(String userName) {
+        return userRepository.findUserByUserName(userName)
+                .orElseThrow(() -> new UserNotFound(String.format("User with username: %s not found", userName)));
+    }
+
     public User addUser(User user) {
         Optional<User> checkUserByUserName = userRepository.findUserByUserName(user.getUserName());
 
