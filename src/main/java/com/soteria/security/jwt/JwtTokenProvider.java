@@ -1,6 +1,8 @@
 package com.soteria.security.jwt;
 
+import com.soteria.services.UserService;
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -14,12 +16,17 @@ public class JwtTokenProvider {
     @Value("${jwt-expiration-milliseconds}")
     private int jwtExpirationInMs;
 
+    @Autowired
+    private UserService userService;
+
     public String generateToken(Authentication authentication) {
         String userName = authentication.getName();
+        Long userId = userService.getUser(userName).getId();
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + jwtExpirationInMs);
 
         return Jwts.builder()
+                .setId(String.valueOf(userId))
                 .setSubject(userName)
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
@@ -34,6 +41,15 @@ public class JwtTokenProvider {
                 .getBody();
 
         return claims.getSubject();
+    }
+
+    public Long getUserIdFromJwt(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(jwtSecret)
+                .parseClaimsJws(token)
+                .getBody();
+
+        return Long.getLong(claims.getId());
     }
 
     public boolean validateToken(String token) {
