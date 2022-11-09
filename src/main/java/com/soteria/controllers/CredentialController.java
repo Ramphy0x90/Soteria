@@ -1,7 +1,6 @@
 package com.soteria.controllers;
 
 import com.soteria.models.Credential;
-import com.soteria.models.User;
 import com.soteria.security.jwt.JwtTokenProvider;
 import com.soteria.services.CredentialService;
 import com.soteria.services.UserService;
@@ -30,9 +29,7 @@ public class CredentialController {
 
     @GetMapping(path = "/all")
     public List<Credential> getCredentials(@RequestHeader("Authorization") String token) {
-        String userName = jwtTokenProvider.getUserNameFromJwt(token);
-        User user = userService.getUser(userName);
-        Long userId = user.getId();
+        Long userId = jwtTokenProvider.getUserIdFromJwt(token);
 
         return credentialService.getCredentials(userId);
     }
@@ -40,9 +37,7 @@ public class CredentialController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Credential> getCredential(@RequestHeader("Authorization") String token,
                                                     @PathVariable("id") Long credentialId) {
-        String userName = jwtTokenProvider.getUserNameFromJwt(token);
-        User user = userService.getUser(userName);
-        Long userId = user.getId();
+        Long userId = jwtTokenProvider.getUserIdFromJwt(token);
 
         return new ResponseEntity<>(credentialService.getCredential(userId, credentialId), HttpStatus.OK);
     }
