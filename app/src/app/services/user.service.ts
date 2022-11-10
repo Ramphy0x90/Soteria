@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,6 +8,8 @@ import { User } from 'src/app/models/user';
   providedIn: 'root'
 })
 export class UserService {
+  userStatus: EventEmitter<boolean> = new EventEmitter;
+  
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -24,5 +26,30 @@ export class UserService {
     return this.httpClient.post(
       `${environment.server}/user/sign-in`, user, this.httpOptions
     );
+  }
+
+  saveLogInUser(user: User, token: string): void {
+    window.sessionStorage.clear();
+
+    this.userStatus.emit(true);
+    user.password = '';
+    window.sessionStorage.setItem('user', JSON.stringify(user));
+    window.sessionStorage.setItem('token', token);
+  }
+
+  getLoggedUser(): User | null {
+    let user = window.sessionStorage.getItem('user');
+    if (user) return JSON.parse(user);
+
+    return null;
+  }
+
+  isLoggedIn(): boolean {
+    return window.sessionStorage.getItem('user') !== null;
+  }
+
+  logOut(): void {
+    this.userStatus.emit(false);
+    window.sessionStorage.clear();
   }
 }
