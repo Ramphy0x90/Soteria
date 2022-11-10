@@ -10,6 +10,7 @@ import { SignupComponent } from './containers/signup/signup.component';
 import { LogInComponent } from './components/user/log-in/log-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeAppComponent,
     LoginComponent,
     SignupComponent,
-    LogInComponent
+    LogInComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
