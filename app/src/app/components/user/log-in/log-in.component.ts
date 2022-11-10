@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-log-in',
@@ -9,31 +10,30 @@ import { User } from 'src/app/models/user';
 })
 export class LogInComponent implements OnInit {
   loginForm: User = {userName: null, password: null};
-  isSuccessful = false;
+  loggedIn = false;
   invalidCredentials: boolean = false;
   errorMessage = '';
 
   formSubmitted: boolean = false;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    const { userName, password } = this.loginForm;
+    let user: User = this.loginForm;
 
-    /*this.authService.register(username, email, password).subscribe(
-      data => {
+    this.userService.logIn(user).subscribe({
+      next: (data) => {
         console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
+        this.loggedIn = true;
+        this.invalidCredentials = false;
       },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
+      error: (err) => {
+        this.invalidCredentials = true;
       }
-    );*/
+    });
   }
 
 }
