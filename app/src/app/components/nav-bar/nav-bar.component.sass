@@ -1,5 +1,5 @@
 @import "/src/assets/style/_variables"
-    
+
 .navbar
     position: absolute
     width: 100%
@@ -15,8 +15,16 @@
     color: $DARK_GREEN
     transition: all 120ms linear
 
-.navbar-nav a:hover
+.navbar-nav a
+    color: $LIGHT
     cursor: pointer
 
 .navbar-nav a:hover
+    color: $GREEN
+
+.navbar-toggler
+    border: 1px solid $GREEN
+    box-shadow: none
+
+.navbar-toggler i
     color: $GREEN
