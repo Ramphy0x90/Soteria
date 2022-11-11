@@ -1,0 +1,53 @@
+<div class="signup-form-main-container form">
+  <div class="header-container">
+    <img src="assets/icons/user.svg" />
+    <div class="header-title">Soteria Signup</div>
+  </div>
+  <div class="form-container">
+    <form
+      name="signupForm"
+      class="signup-form"
+      (ngSubmit)="form.form.valid && onSubmit()"
+      #form="ngForm"
+      novalidate
+    >
+      <div class="username-group form-group">
+        <label for="userName">Username</label>
+        <input
+          type="text"
+          name="userName"
+          [(ngModel)]="signupForm.userName"
+          #userName="ngModel"
+          required
+        />
+        <!-- error -->
+        <div class="text-error" *ngIf="userName.errors && form.submitted">
+          Username required
+        </div>
+      </div>
+      <div class="password-group form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="signupForm.password"
+          #password="ngModel"
+          required
+        />
+        <!-- error -->
+        <div class="text-error" *ngIf="password.errors && form.submitted">
+          Password required
+        </div>
+      </div>
+      <div
+        class="text-error"
+        *ngIf="invalidCredentials && !(userName.errors || password.errors)"
+      >
+        Invalid credentials
+      </div>
+      <div class="form-group">
+        <button class="submit-button" type="submit">Signup</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+@import "/src/assets/style/_variables"
+
+.form
+  width: 80vw
+  max-width: 320px
+  padding: $SPACE_4
+  border-radius: 20px
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1)
+  overflow: hidden
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+  backdrop-filter: blur(7.1px)
+  -webkit-backdrop-filter: blur(7.1px)
+  border: 1px solid rgba(255, 255, 255, 0.3)
+
+.form .header-container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: $SPACE_2
+  width: 100%
+  height: 40%
+  margin-bottom: $SPACE_2 * 3
+
+.form .header-container img
+  width: 32%
+  min-width: 55px
+  filter: invert(39%) sepia(19%) saturate(1718%) hue-rotate(56deg) brightness(98%) contrast(85%)
+
+.form .header-container .header-title
+  color: $LIGHT
+  font-family: "Silkscreen", sans-serif
+  font-size: 22px
+  text-shadow: 2px 2px $DARK_GREEN
+  text-align: center
+
+.form-container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 40%
+  max-height: 210px
+
+.signup-form
+  width: 100%
+  min-width: 110px
+
+.form-group
+  display: flex
+  flex-direction: column
+  align-items: start
+  gap: $SPACE_1
+  margin-bottom: $SPACE_3
+
+.form label
+  color: $LIGHT
+  text-align: left
+
+.form input
+  width: 100%
+  padding: $SPACE_1
+  color: $LIGHT
+  background: $DARK
+  border: 1px solid $GREEN
+
+.form .submit-button
+  color: $LIGHT
+  padding: $SPACE_2
+  border: 0
+  border-radius: 0
+  cursor: pointer
+  background-color: $DARK_GREEN
+  transition: all 120ms linear
+
+.form .submit-button:hover
+  background-color: $GREEN
+
+.form .text-error
+  color: $RED
+  font-size: 13px
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px)
+  .form .header-container .header-title
+    font-size: 28px
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px)
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px)
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px)
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px)

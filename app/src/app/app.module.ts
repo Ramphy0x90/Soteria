@@ -8,6 +8,7 @@ import { HomeAppComponent } from './containers/home-app/home-app.component';
 import { LoginComponent } from './containers/login/login.component';
 import { SignupComponent } from './containers/signup/signup.component';
 import { LogInComponent } from './components/user/log-in/log-in.component';
+import { SingUpComponent } from './components/user/sing-up/sing-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -20,6 +21,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     LoginComponent,
     SignupComponent,
     LogInComponent,
+    SingUpComponent,
     NavBarComponent
   ],
   imports: [
