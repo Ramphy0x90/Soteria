@@ -1,0 +1,29 @@
+@import "/src/assets/style/_variables"
+
+.home-main-container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: $SPACE_4 * 2
+  text-align: center
+  background-image: url('../../../assets/images/shapes_bg.svg')
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+
+.home-main-container .title
+  color: $LIGHT
+  font-size: 38px
+  font-family: "Silkscreen", sans-serif
+  text-shadow: 2px 2px $DARK_GREEN
+
+.buttons-container
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: center
+  gap: $SPACE_2
+
+.buttons-container button
+  width: 150px

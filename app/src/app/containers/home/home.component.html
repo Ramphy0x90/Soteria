@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="home-main-container container">
+  <div class="title">
+    <div class="app-name">Soteria</div>
+    <div class="text">Password manager</div>
+  </div>
+  <div class="buttons-container">
+    <button class="button" *ngIf="!userLogged" routerLink="/login">
+      Login
+    </button>
+    <button class="button" *ngIf="!userLogged" routerLink="/signup">
+      Sign up
+    </button>
+    <button class="button" *ngIf="userLogged" routerLink="/app">App</button>
+  </div>
+</div>
