@@ -1,1 +1,12 @@
-<p>home-app works!</p>
+<div class="home-app-main-container container">
+  <div class="app-card">
+    <div class="form-container">
+      <app-credential-form></app-credential-form>
+    </div>
+    <div class="credentials-container">
+      <app-credential-card
+        *ngFor="let credential of credentials"
+      ></app-credential-card>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CredentialFormComponent } from './components/credential-form/credential-form.component';
+import { CredentialCardComponent } from './components/credential-card/credential-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignupComponent,
     LogInComponent,
     SingUpComponent,
-    NavBarComponent
+    NavBarComponent,
+    CredentialFormComponent,
+    CredentialCardComponent
   ],
   imports: [
     BrowserModule,

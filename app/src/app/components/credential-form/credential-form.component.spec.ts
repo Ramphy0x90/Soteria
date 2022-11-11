@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeAppComponent } from './home-app.component';
+import { CredentialFormComponent } from './credential-form.component';
 
-describe('HomeAppComponent', () => {
-  let component: HomeAppComponent;
-  let fixture: ComponentFixture<HomeAppComponent>;
+describe('CredentialFormComponent', () => {
+  let component: CredentialFormComponent;
+  let fixture: ComponentFixture<CredentialFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeAppComponent ]
+      declarations: [ CredentialFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeAppComponent);
+    fixture = TestBed.createComponent(CredentialFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
