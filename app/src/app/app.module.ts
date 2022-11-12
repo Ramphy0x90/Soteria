@@ -15,6 +15,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CredentialFormComponent } from './components/credential-form/credential-form.component';
 import { CredentialCardComponent } from './components/credential-card/credential-card.component';
+import { PasswordPipe } from './pipes/password.pipe';
+import { UsernamePipe } from './pipes/username.pipe';
+import { PasswordStrengthPipe } from './pipes/password-strength.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { CredentialCardComponent } from './components/credential-card/credential
     SingUpComponent,
     NavBarComponent,
     CredentialFormComponent,
-    CredentialCardComponent
+    CredentialCardComponent,
+    PasswordPipe,
+    UsernamePipe,
+    PasswordStrengthPipe
   ],
   imports: [
     BrowserModule,
