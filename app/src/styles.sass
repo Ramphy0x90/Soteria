@@ -2,6 +2,7 @@
 
 *
   box-sizing: border-box
+  transition: all 120ms linear
 
 html, body
   margin: 0
@@ -23,7 +24,13 @@ body
   border-radius: 0
   cursor: pointer
   background-color: $DARK_GREEN
-  transition: all 120ms linear
 
 .button:hover
   background-color: $GREEN
+
+.modal-content
+  color: $LIGHT !important
+  background-color: $DARK !important
+
+  .modal-title
+    color: $RED
