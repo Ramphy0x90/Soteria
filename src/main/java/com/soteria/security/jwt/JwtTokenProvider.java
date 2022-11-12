@@ -26,7 +26,7 @@ public class JwtTokenProvider {
         Date expireDate = new Date(currentDate.getTime() + jwtExpirationInMs);
 
         return Jwts.builder()
-                .setId(String.valueOf(userId))
+                .claim("userId", String.valueOf(userId))
                 .setSubject(userName)
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
@@ -49,7 +49,7 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody();
 
-        return Long.getLong(claims.getId());
+        return Long.valueOf(claims.get("userId").toString());
     }
 
     public boolean validateToken(String token) {
