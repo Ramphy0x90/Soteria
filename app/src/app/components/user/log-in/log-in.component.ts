@@ -29,7 +29,6 @@ export class LogInComponent implements OnInit {
 
     this.userService.logIn(user).subscribe({
       next: (data) => {
-        console.log(data);
         this.loggedIn = true;
         this.invalidCredentials = false;
 

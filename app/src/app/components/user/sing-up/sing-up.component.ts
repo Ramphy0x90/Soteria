@@ -10,8 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SingUpComponent implements OnInit {
   signupForm: User = {userName: null, password: null};
-  loggedIn = false;
-  invalidCredentials: boolean = false;
+  hasError: boolean = false;
   errorMessage = '';
 
   formSubmitted: boolean = false;
@@ -27,20 +26,15 @@ export class SingUpComponent implements OnInit {
   onSubmit(): void {
     let user: User = this.signupForm;
 
-    this.userService.logIn(user).subscribe({
+    this.userService.signIn(user).subscribe({
       next: (data) => {
-        console.log(data);
-        this.loggedIn = true;
-        this.invalidCredentials = false;
-
-        this.userService.saveLogInUser(user, data.accessToken);
-        this.router.navigate(['app']);
+        this.hasError = false;
+        this.router.navigate(['login']);
       },
       error: (err) => {
-        this.invalidCredentials = true;
+        this.hasError = true;
+        this.errorMessage = err.error;
       }
     });
   }
-
-
 }
