@@ -59,16 +59,16 @@ public class UserController {
     }
 
     @PostMapping("sign-in")
-    public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<User> registerUser(@RequestBody UserDTO userDTO) {
         Role role = roleService.getRole("ROLE_STANDARD");
         String userName = userDTO.getUserName();
         String password = passwordEncoder.encode(userDTO.getPassword());
 
         User user = new User(userName, password, new ArrayList<>());
         user.setRole(role);
-        userService.addUser(user);
+        User newUser = userService.addUser(user);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok(newUser);
     }
 
     @GetMapping(path = "/all")
