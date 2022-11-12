@@ -1,6 +1,8 @@
 package com.soteria;
 
+import com.soteria.models.Credential;
 import com.soteria.models.Entity;
+import com.soteria.repositories.CredentialRepository;
 import com.soteria.repositories.EntityRepository;
 import com.soteria.models.Role;
 import com.soteria.repositories.RoleRepository;
@@ -21,11 +23,15 @@ public class DataConfig {
     private PasswordEncoder passwordEncoder;
 
     @Bean
-    CommandLineRunner commandLineRunner(EntityRepository entityRepository, RoleRepository roleRepository, UserRepository userRepository) {
+    CommandLineRunner commandLineRunner(EntityRepository entityRepository,
+                                        RoleRepository roleRepository,
+                                        UserRepository userRepository,
+                                        CredentialRepository credentialRepository) {
         return args -> {
+            Entity github = new Entity("Github", "github.com", "");
             Entity outlook = new Entity("Outlook", "outlook.com", "");
             Entity gmail = new Entity("Gmail", "gmail.com", "");
-            entityRepository.saveAll(List.of(outlook, gmail));
+            entityRepository.saveAll(List.of(github, outlook, gmail));
 
             Role standard = new Role("ROLE_STANDARD");
             Role admin = new Role("ROLE_ADMIN");
@@ -38,6 +44,10 @@ public class DataConfig {
             );
             user.setRole(admin);
             userRepository.save(user);
+
+            Credential credentialGithub = new Credential(user, outlook, "ramphy0x90", "Ramphy123@hello");
+            Credential credentialOutlook = new Credential(user, outlook, "ramphy_an@outlook.com", "Ramphy123@");
+            credentialRepository.saveAll(List.of(credentialGithub, credentialOutlook));
         };
     }
 }

@@ -17,20 +17,21 @@ public class Credential {
     private String userName;
     private String password;
 
+    public Credential() {}
+
+    public Credential(User user, com.soteria.models.Entity entity, String userName, String password) {
+        this.user = user;
+        this.entity = entity;
+        this.userName = userName;
+        this.password = password;
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Credential() {}
-
-    public Credential(com.soteria.models.Entity entity, String userName, String password) {
-        this.entity = entity;
-        this.userName = userName;
-        this.password = password;
     }
 
     public Long getId() {
