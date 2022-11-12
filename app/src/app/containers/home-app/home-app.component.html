@@ -1,12 +1,46 @@
 <div class="home-app-main-container container">
   <div class="app-card">
-    <div class="form-container">
-      <app-credential-form></app-credential-form>
+    <div class="header">
+      <div class="greeting">Hi {{ loggedUser }}!!</div>
+      <div class="options-container">
+        <i class="bi bi-trash3" data-bs-toggle="modal" data-bs-target="#deleteCredentialModal"></i>
+        <i class="bi bi-pencil-square"></i>
+        <i class="bi bi-plus-square"></i>
+      </div>
     </div>
-    <div class="credentials-container">
-      <app-credential-card
+    <div class="credential-manager" *ngIf="credentials.length > 0">
+      <div class="form-container">
+        <app-credential-form
+        [credential]="selectedCredential"></app-credential-form>
+      </div>
+      <div class="credentials-container">
+        <app-credential-card 
         *ngFor="let credential of credentials"
-      ></app-credential-card>
+        [credential]="credential"
+        [active]="credential.id == selectedCredential.id"
+        (click)="selectCredential(credential)"
+        ></app-credential-card>
+      </div>
     </div>
   </div>
+
+  <!-- Delete credential Modal -->
+  <div class="modal fade" id="deleteCredentialModal" tabindex="-1" aria-labelledby="deleteCredentialModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteCredentialModalLabel">Delete credential</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete these credentials?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCredential()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

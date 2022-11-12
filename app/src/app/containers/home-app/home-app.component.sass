@@ -10,10 +10,9 @@
   background-size: cover
 
 .home-app-main-container .app-card
-  display: flex
-  flex-direction: column
   width: 90%
   max-width: 950px
+  min-width: 190px
   height: 80%
   max-height: 550px
   border-radius: 20px
@@ -21,12 +20,52 @@
   background-color: $DARK_1
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1)
 
-.app-card > div
-  flex: 50%
+.home-app-main-container .header
+  display: flex
+  flex-direction: row
+  justify-content: end
+  align-items: center
+  gap: $SPACE_4 * 2
+  padding-bottom: $SPACE_2
+  border-bottom: 1px solid $LIGHT
 
-.form-container
+  .greeting
+    display: none
+    color: $GREEN
+    font-weight: bold
+  
+  .options-container
+    display: flex
+    flex-direction: row
+    justify-content: end
+    align-items: center
+    gap: $SPACE_4 * 2
 
-.credentials-container
+.home-app-main-container .options-container i
+  color: $DARK_GREEN
+  font-size: 25px
+  cursor: pointer
+
+.home-app-main-container .options-container i:nth-child(1)
+  color: $RED
+
+.home-app-main-container .options-container i:nth-child(2)
+  color: $YELLOW
+
+.home-app-main-container .options-container i:hover
+  filter: brightness(1.5)
+  -ms-filter: brightness(1.5)
+
+.app-card .credential-manager
+  display: flex
+  flex-direction: row
+
+.app-card .credential-manager .form-container
+  display: none
+
+.app-card .credential-manager .credentials-container
+  flex: 100%
+  padding: $SPACE_2
   overflow-y: auto
 
 /* Small devices (landscape phones, 576px and up) */
@@ -34,8 +73,17 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px)
-  .home-app-main-container .app-card
-    flex-direction: row
+  .app-card .credential-manager > div
+    flex: 0 0 50%
+
+  .app-card .credential-manager .form-container
+    display: inherit
+
+  .home-app-main-container .header
+    justify-content: space-between
+
+    .greeting
+      display: inherit
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px)
