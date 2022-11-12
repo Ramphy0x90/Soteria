@@ -10,7 +10,7 @@ import { SignupComponent } from './containers/signup/signup.component';
 import { LogInComponent } from './components/user/log-in/log-in.component';
 import { SingUpComponent } from './components/user/sing-up/sing-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CredentialFormComponent } from './components/credential-form/credential-form.component';
@@ -18,6 +18,7 @@ import { CredentialCardComponent } from './components/credential-card/credential
 import { PasswordPipe } from './pipes/password.pipe';
 import { UsernamePipe } from './pipes/username.pipe';
 import { PasswordStrengthPipe } from './pipes/password-strength.pipe';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { PasswordStrengthPipe } from './pipes/password-strength.pipe';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

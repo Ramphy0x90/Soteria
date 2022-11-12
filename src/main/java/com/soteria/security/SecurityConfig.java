@@ -48,6 +48,7 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
                         .antMatchers("/api/v1/user/log-in/**").permitAll()
                         .antMatchers("/api/v1/user/sign-in/**").permitAll()
+                        .antMatchers("/api/v1/credential/all").permitAll()
                         .anyRequest()
                         .authenticated()
                 );
