@@ -44,6 +44,11 @@ export class UserService {
     return null;
   }
 
+  getLoggedUserToken(): string {
+    let token = window.sessionStorage.getItem('token');
+    return token ? token : '';
+  }
+
   isLoggedIn(): boolean {
     return window.sessionStorage.getItem('user') !== null;
   }
