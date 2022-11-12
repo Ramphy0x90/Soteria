@@ -8,7 +8,7 @@
         <i class="bi bi-plus-square"></i>
       </div>
     </div>
-    <div class="credential-manager" *ngIf="credentials.length > 0">
+    <div class="credential-manager" *ngIf="credentials">
       <div class="form-container">
         <app-credential-form
         [credential]="selectedCredential"></app-credential-form>

@@ -10,13 +10,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeAppComponent implements OnInit {
   loggedUser!: String | null | undefined;
-  credentials: Credential[] = [
-    {id: 1, entity: 1, userName: 'Ramphy0x90', password: 'Ramphy123@'},
-    {id: 2, entity: 2, userName: '_ramphy_', password: 'password'},
-    {id: 3, entity: 3, userName: 'ramphy_an@outlook.com', password: 'helloWorld'}
-  ];
+  credentials!: Credential[];
 
-  selectedCredential: Credential = this.credentials[0];
+  selectedCredential!: Credential;
 
   constructor(private userService: UserService, private credentialService: CredentialService) { }
 
@@ -24,6 +20,7 @@ export class HomeAppComponent implements OnInit {
     this.credentialService.getCredentials().subscribe({
       next: (data) => {
         this.credentials = data;
+        this.selectedCredential = this.credentials[0]
       }
     })
     this.loggedUser = this.userService.getLoggedUser()?.userName
