@@ -17,7 +17,7 @@ public class EntityController {
         this.entityService = entityService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public List<Entity> getEntities() {
         return entityService.getEntities();
     }

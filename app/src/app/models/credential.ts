@@ -2,7 +2,8 @@ import { Entity } from "./entity";
 
 export interface Credential {
   id: number | null;
-  entity: Entity;
+  entityId: number | null | undefined;
+  entity: Entity | null;
   userName: string;
   password: string;
 }
