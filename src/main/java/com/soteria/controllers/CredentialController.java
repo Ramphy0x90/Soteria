@@ -41,4 +41,12 @@ public class CredentialController {
 
         return new ResponseEntity<>(credentialService.getCredential(userId, credentialId), HttpStatus.OK);
     }
+
+    @PostMapping(path = "/add")
+    public ResponseEntity<Credential> addCredential(@RequestHeader("Authorization") String token,
+                                                    @RequestBody Credential credential) {
+        Long userId = jwtTokenProvider.getUserIdFromJwt(token);
+
+        return new ResponseEntity<>(credentialService.addCredential(userId, credential), HttpStatus.OK);
+    }
 }
