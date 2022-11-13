@@ -41,32 +41,33 @@
     align-items: center
     gap: $SPACE_4 * 2
 
-.home-app-main-container .options-container i
-  color: $DARK_GREEN
-  font-size: 25px
-  cursor: pointer
-
-.home-app-main-container .options-container i:nth-child(1)
-  color: $RED
-
-.home-app-main-container .options-container i:nth-child(2)
-  color: $YELLOW
-
-.home-app-main-container .options-container i:hover
-  filter: brightness(1.5)
-  -ms-filter: brightness(1.5)
+.home-app-main-container .options-container
+  i
+    color: $DARK_GREEN
+    font-size: 25px
+    cursor: pointer
+  i:hover
+    filter: brightness(1.5)
+    -ms-filter: brightness(1.5)
+  i:nth-child(1)
+    color: $RED
+  i:nth-child(2)
+    color: $YELLOW
 
 .app-card .credential-manager
   display: flex
   flex-direction: row
+  .form-container
+    display: none
+  .credentials-container
+    flex: 100%
+    padding: $SPACE_2
+    overflow-y: auto
 
-.app-card .credential-manager .form-container
-  display: none
-
-.app-card .credential-manager .credentials-container
-  flex: 100%
+.no-credentials-text
+  font-size: 28px
   padding: $SPACE_2
-  overflow-y: auto
+  color: $GREY
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px)

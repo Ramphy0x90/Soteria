@@ -8,7 +8,7 @@
         <i class="bi bi-plus-square"></i>
       </div>
     </div>
-    <div class="credential-manager" *ngIf="credentials">
+    <div class="credential-manager" *ngIf="credentials && credentials.length > 0">
       <div class="form-container">
         <app-credential-form
         [credential]="selectedCredential"></app-credential-form>
@@ -22,6 +22,7 @@
         ></app-credential-card>
       </div>
     </div>
+    <p class="no-credentials-text" *ngIf="!(credentials && credentials.length > 0)">No credential registered</p>
   </div>
 
   <!-- Delete credential Modal -->
