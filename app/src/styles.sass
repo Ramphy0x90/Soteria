@@ -32,5 +32,48 @@ body
   color: $LIGHT !important
   background-color: $DARK !important
 
-  .modal-title
+  #addCredentialModalLabel
+    color: $GREEN
+
+  #deleteCredentialModalLabel
     color: $RED
+
+.form-container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 40%
+  max-height: 210px
+
+.form-group
+  display: flex
+  flex-direction: column
+  align-items: start
+  gap: $SPACE_1
+  margin-bottom: $SPACE_3
+
+.form label
+  color: $LIGHT
+  text-align: left
+
+.form input
+  width: 100%
+  padding: $SPACE_1
+  color: $LIGHT
+  background: $DARK
+  border: 1px solid $GREEN
+
+.form .submit-button
+  color: $LIGHT
+  padding: $SPACE_2
+  border: 0
+  border-radius: 0
+  cursor: pointer
+  background-color: $DARK_GREEN
+
+.form .submit-button:hover
+  background-color: $GREEN
+
+.form .text-error
+  color: $RED
+  font-size: 13px

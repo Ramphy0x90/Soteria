@@ -22,8 +22,8 @@ export class HomeAppComponent implements OnInit {
         this.credentials = data;
         this.selectedCredential = this.credentials[0]
       }
-    })
-    this.loggedUser = this.userService.getLoggedUser()?.userName
+    });
+    this.loggedUser = this.userService.getLoggedUser()?.userName;
   }
 
   selectCredential(credential: Credential): void {
