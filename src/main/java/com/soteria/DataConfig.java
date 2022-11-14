@@ -22,6 +22,16 @@ public class DataConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * This commandline is used to generate default entities
+     * and roles for Soteria, it also creates a default admin user (root)
+     *
+     * @param entityRepository
+     * @param roleRepository
+     * @param userRepository
+     * @param credentialRepository
+     * @return
+     */
     @Bean
     CommandLineRunner commandLineRunner(EntityRepository entityRepository,
                                         RoleRepository roleRepository,
