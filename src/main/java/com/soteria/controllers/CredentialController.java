@@ -49,4 +49,12 @@ public class CredentialController {
 
         return new ResponseEntity<>(credentialService.addCredential(userId, credential), HttpStatus.OK);
     }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public ResponseEntity<?> removeCredential(@RequestHeader("Authorization") String token,
+                                              @PathVariable("id") Long credentialId) {
+        credentialService.removeCredential(credentialId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
