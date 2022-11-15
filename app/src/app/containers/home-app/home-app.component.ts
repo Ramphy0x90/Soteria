@@ -36,7 +36,11 @@ export class HomeAppComponent implements OnInit {
 
   deleteCredential(): void {
     if(this.selectedCredential && this.selectedCredential.id) {
-      this.credentialService.deleteCredential(this.selectedCredential.id).subscribe();
+      this.credentialService.deleteCredential(this.selectedCredential.id).subscribe({
+        next: () => {
+          this.fetchCredentials();
+        }
+      });
     }
   }
 
