@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *  Entity service
+ *  @author  Ramphy Aquino Nova
+ *  @version 2022.11.15
+ */
 @Service
 public class EntityService {
     private final EntityRepository entityRepository;
@@ -17,6 +22,11 @@ public class EntityService {
         this.entityRepository = entityRepository;
     }
 
+    /**
+     * Get all entities
+     *
+     * @return List<Entity>
+     */
     public List<Entity> getEntities() {
         return entityRepository.findAll();
     }
@@ -31,10 +41,11 @@ public class EntityService {
         entityRepository.save(entity);
     }
 
-    public void updateEntity() {
-
-    }
-
+    /**
+     * Delete entity by given id
+     *
+     * @param entityId Entity id
+     */
     public void removeEntity(Long entityId) {
         boolean checkEntity = entityRepository.existsById(entityId);
 

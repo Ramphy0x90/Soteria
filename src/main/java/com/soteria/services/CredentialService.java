@@ -12,6 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *  Credential service
+ *  @author  Ramphy Aquino Nova
+ *  @version 2022.11.15
+ */
 @Service
 @Transactional
 public class CredentialService {
@@ -24,15 +29,35 @@ public class CredentialService {
         this.userService = userService;
     }
 
+    /**
+     * Get all credentials
+     *
+     * @param userId User id
+     * @return List<Credential>
+     */
     public List<Credential> getCredentials(Long userId) {
-        return (List<Credential>) credentialRepository.findCredentialsByUserId(userId);
+        return credentialRepository.findCredentialsByUserId(userId);
     }
 
+    /**
+     * Get credential by user id and credential id
+     *
+     * @param userId User id
+     * @param credentialId Credential id
+     * @return Credential
+     */
     public Credential getCredential(Long userId, Long credentialId) {
         return credentialRepository.findCredentialByIdAndUserId(userId, credentialId)
                 .orElseThrow(() -> new CredentialNotFound("Credential not found"));
     }
 
+    /**
+     * Create new credential
+     *
+     * @param userId User id
+     * @param credential New Credential object
+     * @return Credential
+     */
     public Credential addCredential(Long userId, Credential credential) {
         Optional<Credential> checkCredentialExists = credentialRepository.findCredentialByEntityIdAndUserId(
                 credential.getEntity().getId(),
@@ -49,6 +74,13 @@ public class CredentialService {
         return credentialRepository.save(credential);
     }
 
+    /**
+     * Update credential by give user id and credential
+     *
+     * @param userId User id
+     * @param credential Credential
+     * @return Credential
+     */
     public Credential updateCredential(Long userId, Credential credential) {
         Credential updatedCredential = credentialRepository.findCredentialByEntityIdAndUserId(
                 credential.getEntity().getId(),
@@ -61,6 +93,11 @@ public class CredentialService {
         return updatedCredential;
     }
 
+    /**
+     * Delete Credential by given id
+     *
+     * @param id Credential id
+     */
     public void removeCredential(Long id) {
         credentialRepository.findById(id).orElseThrow(() -> new CredentialNotFound("Credential not found"));
         credentialRepository.deleteById(id);
