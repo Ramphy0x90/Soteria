@@ -1,5 +1,7 @@
 package com.soteria;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.soteria.models.Credential;
 import com.soteria.models.Entity;
 import com.soteria.repositories.CredentialRepository;
@@ -12,8 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,12 +42,20 @@ public class DataConfig {
     CommandLineRunner commandLineRunner(EntityRepository entityRepository,
                                         RoleRepository roleRepository,
                                         UserRepository userRepository,
-                                        CredentialRepository credentialRepository) {
+                                        CredentialRepository credentialRepository) throws IOException {
+
+        // Object mapper to read json file and get entities
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        // Get entities from json file
+        List<Entity> entities = objectMapper.readValue(
+                new File(new ClassPathResource("static/entities.default.json").getFile().toURI()),
+                new TypeReference<>(){}
+        );
+
         return args -> {
-            Entity github = new Entity("Github", "github.com", "");
-            Entity outlook = new Entity("Outlook", "outlook.com", "");
-            Entity gmail = new Entity("Gmail", "gmail.com", "");
-            entityRepository.saveAll(List.of(github, outlook, gmail));
+            entityRepository.saveAll(entities);
 
             Role standard = new Role("ROLE_STANDARD");
             Role admin = new Role("ROLE_ADMIN");
@@ -55,8 +69,8 @@ public class DataConfig {
             user.setRole(admin);
             userRepository.save(user);
 
-            Credential credentialGithub = new Credential(user, outlook, "ramphy0x90", "Ramphy123@hello");
-            Credential credentialOutlook = new Credential(user, outlook, "ramphy_an@outlook.com", "Ramphy123@");
+            Credential credentialGithub = new Credential(user, entities.get(0), "ramphy0x90", "Ramphy123@hello");
+            Credential credentialOutlook = new Credential(user, entities.get(1), "ramphy_an@outlook.com", "Ramphy123@");
             credentialRepository.saveAll(List.of(credentialGithub, credentialOutlook));
         };
     }

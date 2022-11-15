@@ -1,202 +1,202 @@
 [
   {
-    "Site": "Google Search",
-    "Domain Name": "google.com"
+    "name": "Google Search",
+    "url": "google.com"
   },
   {
-    "Site": "YouTube",
-    "Domain Name": "youtube.com"
+    "name": "YouTube",
+    "url": "youtube.com"
   },
   {
-    "Site": "Facebook",
-    "Domain Name": "facebook.com"
+    "name": "Facebook",
+    "url": "facebook.com"
   },
   {
-    "Site": "Twitter",
-    "Domain Name": "twitter.com"
+    "name": "Twitter",
+    "url": "twitter.com"
   },
   {
-    "Site": "Instagram",
-    "Domain Name": "instagram.com"
+    "name": "Instagram",
+    "url": "instagram.com"
   },
   {
-    "Site": "Baidu",
-    "Domain Name": "baidu.com"
+    "name": "Baidu",
+    "url": "baidu.com"
   },
   {
-    "Site": "Wikipedia",
-    "Domain Name": "wikipedia.org"
+    "name": "Wikipedia",
+    "url": "wikipedia.org"
   },
   {
-    "Site": "Yandex",
-    "Domain Name": "yandex.ru"
+    "name": "Yandex",
+    "url": "yandex.ru"
   },
   {
-    "Site": "Yahoo",
-    "Domain Name": "yahoo.com"
+    "name": "Yahoo",
+    "url": "yahoo.com"
   },
   {
-    "Site": "xVideos",
-    "Domain Name": "xvideos.com"
+    "name": "xVideos",
+    "url": "xvideos.com"
   },
   {
-    "Site": "WhatsApp",
-    "Domain Name": "whatsapp.com"
+    "name": "WhatsApp",
+    "url": "whatsapp.com"
   },
   {
-    "Site": "Pornhub",
-    "Domain Name": "pornhub.com"
+    "name": "Pornhub",
+    "url": "pornhub.com"
   },
   {
-    "Site": "Xnxx",
-    "Domain Name": "xnxx.com"
+    "name": "Xnxx",
+    "url": "xnxx.com"
   },
   {
-    "Site": "Amazon",
-    "Domain Name": "amazon.com"
+    "name": "Amazon",
+    "url": "amazon.com"
   },
   {
-    "Site": "Yahoo JP",
-    "Domain Name": "yahoo.co.jp"
+    "name": "Yahoo JP",
+    "url": "yahoo.co.jp"
   },
   {
-    "Site": "Live",
-    "Domain Name": "live.com"
+    "name": "Live",
+    "url": "live.com"
   },
   {
-    "Site": "Netflix",
-    "Domain Name": "netflix.com"
+    "name": "Netflix",
+    "url": "netflix.com"
   },
   {
-    "Site": "Reddit",
-    "Domain Name": "reddit.com"
+    "name": "Reddit",
+    "url": "reddit.com"
   },
   {
-    "Site": "TikTok",
-    "Domain Name": "tiktok.com"
+    "name": "TikTok",
+    "url": "tiktok.com"
   },
   {
-    "Site": "Docomo",
-    "Domain Name": "docomo.ne.jp"
+    "name": "Docomo",
+    "url": "docomo.ne.jp"
   },
   {
-    "Site": "LinkedIn",
-    "Domain Name": "linkedin.com"
+    "name": "LinkedIn",
+    "url": "linkedin.com"
   },
   {
-    "Site": "Office",
-    "Domain Name": "office.com"
+    "name": "Office",
+    "url": "office.com"
   },
   {
-    "Site": "Samsung",
-    "Domain Name": "samsung.com"
+    "name": "Samsung",
+    "url": "samsung.com"
   },
   {
-    "Site": "Yandex Turbo Pages",
-    "Domain Name": "turbopages.org"
+    "name": "Yandex Turbo Pages",
+    "url": "turbopages.org"
   },
   {
-    "Site": "VK",
-    "Domain Name": "vk.com"
+    "name": "VK",
+    "url": "vk.com"
   },
   {
-    "Site": "xHamster",
-    "Domain Name": "xhamster.com"
+    "name": "xHamster",
+    "url": "xhamster.com"
   },
   {
-    "Site": "Weather",
-    "Domain Name": "weather.com"
+    "name": "Weather",
+    "url": "weather.com"
   },
   {
-    "Site": "Twitch",
-    "Domain Name": "twitch.tv"
+    "name": "Twitch",
+    "url": "twitch.tv"
   },
   {
-    "Site": "Mail.Ru",
-    "Domain Name": "mail.ru"
+    "name": "Mail.Ru",
+    "url": "mail.ru"
   },
   {
-    "Site": "Naver",
-    "Domain Name": "naver.com"
+    "name": "Naver",
+    "url": "naver.com"
   },
   {
-    "Site": "Discord",
-    "Domain Name": "discord.com"
+    "name": "Discord",
+    "url": "discord.com"
   },
   {
-    "Site": "Bing",
-    "Domain Name": "bing.com"
+    "name": "Bing",
+    "url": "bing.com"
   },
   {
-    "Site": "Roblox",
-    "Domain Name": "roblox.com"
+    "name": "Roblox",
+    "url": "roblox.com"
   },
   {
-    "Site": "Bilibili",
-    "Domain Name": "bilibili.com"
+    "name": "Bilibili",
+    "url": "bilibili.com"
   },
   {
-    "Site": "Microsoft Online",
-    "Domain Name": "microsoftonline.com"
+    "name": "Microsoft Online",
+    "url": "microsoftonline.com"
   },
   {
-    "Site": "Pinterest",
-    "Domain Name": "pinterest.com"
+    "name": "Pinterest",
+    "url": "pinterest.com"
   },
   {
-    "Site": "Zoom",
-    "Domain Name": "zoom.us"
+    "name": "Zoom",
+    "url": "zoom.us"
   },
   {
-    "Site": "QQ",
-    "Domain Name": "qq.com"
+    "name": "QQ",
+    "url": "qq.com"
   },
   {
-    "Site": "DuckDuckGo",
-    "Domain Name": "duckduckgo.com"
+    "name": "DuckDuckGo",
+    "url": "duckduckgo.com"
   },
   {
-    "Site": "Microsoft",
-    "Domain Name": "microsoft.com"
+    "name": "Microsoft",
+    "url": "microsoft.com"
   },
   {
-    "Site": "Fandom",
-    "Domain Name": "fandom.com"
+    "name": "Fandom",
+    "url": "fandom.com"
   },
   {
-    "Site": "Quora",
-    "Domain Name": "quora.com"
+    "name": "Quora",
+    "url": "quora.com"
   },
   {
-    "Site": "Yahoo! News",
-    "Domain Name": "news.yahoo.co.jp"
+    "name": "Yahoo! News",
+    "url": "news.yahoo.co.jp"
   },
   {
-    "Site": "RealSRV",
-    "Domain Name": "realsrv.com"
+    "name": "RealSRV",
+    "url": "realsrv.com"
   },
   {
-    "Site": "eBay",
-    "Domain Name": "ebay.com"
+    "name": "eBay",
+    "url": "ebay.com"
   },
   {
-    "Site": "MSN",
-    "Domain Name": "msn.com"
+    "name": "MSN",
+    "url": "msn.com"
   },
   {
-    "Site": "Globo",
-    "Domain Name": "globo.com"
+    "name": "Globo",
+    "url": "globo.com"
   },
   {
-    "Site": "Stripchat",
-    "Domain Name": "stripchat.com"
+    "name": "Stripchat",
+    "url": "stripchat.com"
   },
   {
-    "Site": "Booking",
-    "Domain Name": "booking.com"
+    "name": "Booking",
+    "url": "booking.com"
   },
   {
-    "Site": "OK.ru",
-    "Domain Name": "ok.ru"
+    "name": "OK.ru",
+    "url": "ok.ru"
   }
 ]
