@@ -31,4 +31,10 @@ export class CredentialService {
       `${environment.server}/credential/add`, credential, this.httpOptions
     );
   }
+
+  deleteCredential(credentialId: number): Observable<any> {
+    return this.httpClient.delete(
+      `${environment.server}/credential/delete/${credentialId}`
+    );
+  }
 }

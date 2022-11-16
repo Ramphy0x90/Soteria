@@ -17,13 +17,17 @@ export class HomeAppComponent implements OnInit {
   constructor(private userService: UserService, private credentialService: CredentialService) { }
 
   ngOnInit(): void {
+    this.fetchCredentials();
+    this.loggedUser = this.userService.getLoggedUser()?.userName;
+  }
+
+  fetchCredentials(): void {
     this.credentialService.getCredentials().subscribe({
       next: (data) => {
         this.credentials = data;
         this.selectedCredential = this.credentials[0]
       }
     });
-    this.loggedUser = this.userService.getLoggedUser()?.userName;
   }
 
   selectCredential(credential: Credential): void {
@@ -31,7 +35,13 @@ export class HomeAppComponent implements OnInit {
   }
 
   deleteCredential(): void {
-
+    if(this.selectedCredential && this.selectedCredential.id) {
+      this.credentialService.deleteCredential(this.selectedCredential.id).subscribe({
+        next: () => {
+          this.fetchCredentials();
+        }
+      });
+    }
   }
 
 }
