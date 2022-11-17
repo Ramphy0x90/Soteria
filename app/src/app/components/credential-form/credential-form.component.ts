@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Credential } from 'src/app/models/credential';
+import { CredentialForm } from 'src/app/models/credential-form';
 import { Entity } from 'src/app/models/entity';
-import { CredentialService } from 'src/app/services/credential.service';
 import { EntityService } from 'src/app/services/entity.service';
 
 @Component({
@@ -10,25 +11,18 @@ import { EntityService } from 'src/app/services/entity.service';
   styleUrls: ['./credential-form.component.sass']
 })
 export class CredentialFormComponent implements OnInit {
-  @Input() credential!: Credential;
   // 0 -> Read | 1 -> New | 2 -> Edit
   @Input() mode: number = 0;
+  @Input() credential!: Credential;
+  @Output() credentialForm = new EventEmitter<CredentialForm>();
 
   passwordVisible: boolean = false;
-  credentialForm: Credential = {
-    id: null,
-    entity: null,
-    entityId: 0,
-    userName: '',
-    password: ''
-  };
   invalidCredentials: boolean = false;
-  errorMessage = '';
   formSubmitted: boolean = false;
+  errorMessage = '';
   entities!: Entity[];
 
-
-  constructor(private entityService: EntityService, private credentialService: CredentialService) { }
+  constructor(private entityService: EntityService) { }
 
   ngOnInit(): void {
     this.entityService.getEntities().subscribe({
@@ -36,32 +30,13 @@ export class CredentialFormComponent implements OnInit {
         this.entities = data;
       }
     });
-
-    if(this.mode == 2) {
-      this.credentialForm = {
-        id: this.credential.id,
-        entity: this.credential.entity,
-        entityId: this.credential.entity?.id,
-        userName: this.credential.userName,
-        password: this.credential.password
-      }
-    }
   }
 
   passwordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  onSubmit(): void {
-    let credential: Credential = this.credentialForm;
-
-    this.credentialService.addCredential(credential).subscribe({
-      next: (data) => {
-        console.log(data)
-      },
-      error: (err) => {
-        this.invalidCredentials = true;
-      }
-    });
+  onSubmit(form: NgForm): void {
+    this.credentialForm.emit({form: form, data: this.credential});
   }
 }

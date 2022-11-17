@@ -3,9 +3,19 @@
     <div class="header">
       <div class="greeting">Hi {{ loggedUser }}!!</div>
       <div class="options-container">
-        <i class="bi bi-trash3" data-bs-toggle="modal" data-bs-target="#deleteCredentialModal"></i>
-        <i class="bi bi-pencil-square"></i>
-        <i class="bi bi-plus-square" data-bs-toggle="modal" data-bs-target="#addCredentialModal"></i>
+        <button class="btn"
+        [disabled]="!(credentials.length > 0)">
+          <i class="bi bi-trash3" data-bs-toggle="modal" data-bs-target="#deleteCredentialModal"></i>
+        </button>
+        <button class="btn"
+        [disabled]="!(credentials.length > 0)"
+        (click)="setCredentialFormMode(2)">
+          <i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#credentialFormModal"></i>
+        </button>
+        <button class="btn"
+        (click)="setCredentialFormMode(1); initCredential()">
+          <i class="bi bi-plus-square" data-bs-toggle="modal" data-bs-target="#credentialFormModal"></i>
+        </button>
       </div>
     </div>
     <div class="credential-manager" *ngIf="credentials && credentials.length > 0">
@@ -26,21 +36,24 @@
     <p class="no-credentials-text" *ngIf="!(credentials && credentials.length > 0)">No credential registered</p>
   </div>
 
-  <!-- Add credential Modal -->
-  <div class="modal fade" id="addCredentialModal" tabindex="-1" aria-labelledby="addCredentialModalLabel" aria-hidden="true">
+  <!-- Credential Form Modal -->
+  <div class="modal fade" id="credentialFormModal" tabindex="-1" aria-labelledby="credentialFormModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="addCredentialModalLabel">Add credential</h1>
+          <h1 class="modal-title fs-5" id="credentialFormModalLabel">{{ credentialFormTitle[credentialFormMode - 1] }}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <app-credential-form
-          [mode]="1"></app-credential-form>
+          [mode]="credentialFormMode"
+          [credential]="credential"
+          (credentialForm)="saveCredential($event)"
+          ></app-credential-form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-success" form="addCredentialForm">Submit</button>
+          <button type="submit" class="btn btn-success" form="saveCredentialForm">Submit</button>
         </div>
       </div>
     </div>

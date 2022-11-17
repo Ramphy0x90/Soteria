@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Credential } from 'src/app/models/credential';
+import { CredentialForm } from 'src/app/models/credential-form';
 import { CredentialService } from 'src/app/services/credential.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +12,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeAppComponent implements OnInit {
   loggedUser!: String | null | undefined;
-  credentials!: Credential[];
+  credential!: Credential;
+  credentials: Credential[] = [];
+
+  credentialFormMode = 1;
+  credentialFormTitle = ["Add new credential", "Edit credential"];
+  credentialForm!: CredentialForm;
 
   selectedCredential!: Credential;
 
@@ -18,20 +25,58 @@ export class HomeAppComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCredentials();
+    this.initCredential();
     this.loggedUser = this.userService.getLoggedUser()?.userName;
+  }
+
+  initCredential() {
+    this.credential =  {
+      id: null,
+      entity: null,
+      entityId: 0,
+      userName: '',
+      password: ''
+    };
+
+    if(this.credentialForm !== undefined) {
+      this.credentialForm.form.resetForm();
+    }
   }
 
   fetchCredentials(): void {
     this.credentialService.getCredentials().subscribe({
       next: (data) => {
         this.credentials = data;
-        this.selectedCredential = this.credentials[0]
+        this.selectedCredential = this.credentials[0];
       }
     });
   }
 
+  setCredentialFormMode(mode: number): void {
+    this.credentialFormMode = mode;
+
+    // On update form
+    if(mode == 2) {
+      this.credential = this.selectedCredential;
+    }
+  }
+
   selectCredential(credential: Credential): void {
     this.selectedCredential = credential;
+  }
+
+  saveCredential(credentialForm: CredentialForm): void {
+    this.credentialForm = credentialForm;
+    let credential: Credential = credentialForm.data;
+
+    this.credentialService.addCredential(credential).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   deleteCredential(): void {
