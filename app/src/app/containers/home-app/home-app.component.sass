@@ -33,7 +33,7 @@
     display: none
     color: $GREEN
     font-weight: bold
-  
+
   .options-container
     display: flex
     flex-direction: row
@@ -42,6 +42,8 @@
     gap: $SPACE_4 * 2
 
 .home-app-main-container .options-container
+  button
+    padding: 0
   i
     color: $DARK_GREEN
     font-size: 25px
@@ -49,9 +51,9 @@
   i:hover
     filter: brightness(1.5)
     -ms-filter: brightness(1.5)
-  i:nth-child(1)
+  button:nth-child(1) i
     color: $RED
-  i:nth-child(2)
+  button:nth-child(2) i
     color: $YELLOW
 
 .app-card .credential-manager
