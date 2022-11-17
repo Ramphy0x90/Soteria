@@ -69,14 +69,26 @@ export class HomeAppComponent implements OnInit {
     this.credentialForm = credentialForm;
     let credential: Credential = credentialForm.data;
 
-    this.credentialService.addCredential(credential).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+    if(this.credentialFormMode == 1) {
+      this.credentialService.addCredential(credential).subscribe({
+        next: (data) => {
+          this.initCredential();
+          this.fetchCredentials();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    } else if(this.credentialFormMode == 2) {
+      this.credentialService.updateCredential(credential).subscribe({
+        next: (data) => {
+          this.fetchCredentials();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
   }
 
   deleteCredential(): void {

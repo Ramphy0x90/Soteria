@@ -50,6 +50,14 @@ public class CredentialController {
         return new ResponseEntity<>(credentialService.addCredential(userId, credential), HttpStatus.OK);
     }
 
+    @PutMapping(path = "/update")
+    public ResponseEntity<Credential> updateCredential(@RequestHeader("Authorization") String token,
+                                                       @RequestBody Credential credential) {
+        Long userId = jwtTokenProvider.getUserIdFromJwt(token);
+
+        return new ResponseEntity<>(credentialService.updateCredential(userId, credential), HttpStatus.OK);
+    }
+
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<?> removeCredential(@RequestHeader("Authorization") String token,
                                               @PathVariable("id") Long credentialId) {
