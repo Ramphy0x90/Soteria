@@ -1,6 +1,7 @@
 package com.soteria.controllers;
 
 import com.soteria.models.Credential;
+import com.soteria.payload.CredentialDTO;
 import com.soteria.security.jwt.JwtTokenProvider;
 import com.soteria.services.CredentialService;
 import com.soteria.services.UserService;
@@ -48,6 +49,15 @@ public class CredentialController {
         Long userId = jwtTokenProvider.getUserIdFromJwt(token);
 
         return new ResponseEntity<>(credentialService.addCredential(userId, credential), HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/update/{id}")
+    public ResponseEntity<Credential> updateCredential(@RequestHeader("Authorization") String token,
+                                                       @PathVariable("id") Long credentialId,
+                                                       @RequestBody CredentialDTO credential) {
+        Long userId = jwtTokenProvider.getUserIdFromJwt(token);
+
+        return new ResponseEntity<>(credentialService.updateCredential(userId, credentialId, credential), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/delete/{id}")
