@@ -20,17 +20,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  User controller
+ *  @author  Ramphy Aquino Nova
+ *  @version 2022.11.18
+ */
 @RestController
 @RequestMapping(path = "api/v1/user")
 public class UserController {
     private final UserService userService;
-
     private final RoleService roleService;
-
     private final AuthenticationManager authenticationManager;
-
     private final JwtTokenProvider jwtTokenProvider;
-
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -46,6 +47,11 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * Returns a new JWT token
+     * @param userDTO user data
+     * @return ResponseEntity<JwtAuthenticationResponse>
+     */
     @PostMapping("/log-in")
     public ResponseEntity<JwtAuthenticationResponse> authenticateUser(@RequestBody UserDTO userDTO) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -58,6 +64,11 @@ public class UserController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
+    /**
+     * Returns the new created user data
+     * @param userDTO user data
+     * @return ResponseEntity<User>
+     */
     @PostMapping("sign-in")
     public ResponseEntity<User> registerUser(@RequestBody UserDTO userDTO) {
         Role role = roleService.getRole("ROLE_STANDARD");
@@ -71,21 +82,42 @@ public class UserController {
         return ResponseEntity.ok(newUser);
     }
 
+    /**
+     * Returns all users
+     * @return List<User>
+     */
     @GetMapping(path = "/all")
     public List<User> getUsers() {
         return userService.getUsers();
     }
 
+    /**
+     * Returns a user by given user id
+     * @param id user id
+     * @return User
+     */
     @GetMapping(path = "/{id}")
     public User getUser(@PathVariable("id") Long id) {
         return userService.getUser(id);
     }
 
+    /**
+     * Create a new user and returns the created user
+     * @param user user data
+     * @return User
+     */
     @PostMapping(path = "/add")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
 
+    /**
+     * Update user data and returns the updated user
+     * @param id user id
+     * @param userName new username
+     * @param password new password
+     * @return User
+     */
     @PutMapping(path = "/update/{id}")
     public User updateUser(@PathVariable("id") Long id,
                            @RequestParam("userName") String userName,
@@ -94,6 +126,10 @@ public class UserController {
         return userService.updateUSer(id, userName, password);
     }
 
+    /**
+     * Delete a user by given id
+     * @param id user id
+     */
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         userService.removeUser(id);

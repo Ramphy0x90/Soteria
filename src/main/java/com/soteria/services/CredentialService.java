@@ -31,7 +31,6 @@ public class CredentialService {
 
     /**
      * Get all credentials
-     *
      * @param userId User id
      * @return List<Credential>
      */
@@ -41,7 +40,6 @@ public class CredentialService {
 
     /**
      * Get credential by user id and credential id
-     *
      * @param userId User id
      * @param credentialId Credential id
      * @return Credential
@@ -53,7 +51,6 @@ public class CredentialService {
 
     /**
      * Create new credential
-     *
      * @param userId User id
      * @param credential New Credential object
      * @return Credential
@@ -76,7 +73,6 @@ public class CredentialService {
 
     /**
      * Update credential by give user id and credential
-     *
      * @param userId User id
      * @param credential Credential
      * @return Credential
@@ -95,7 +91,6 @@ public class CredentialService {
 
     /**
      * Delete Credential by given id
-     *
      * @param id Credential id
      */
     public void removeCredential(Long id) {

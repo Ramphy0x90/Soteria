@@ -1,6 +1,10 @@
 [
   {
-    "name": "Google Search",
+    "name": "Github",
+    "url": "github.com"
+  },
+  {
+    "name": "Google",
     "url": "google.com"
   },
   {
@@ -36,20 +40,8 @@
     "url": "yahoo.com"
   },
   {
-    "name": "xVideos",
-    "url": "xvideos.com"
-  },
-  {
     "name": "WhatsApp",
     "url": "whatsapp.com"
-  },
-  {
-    "name": "Pornhub",
-    "url": "pornhub.com"
-  },
-  {
-    "name": "Xnxx",
-    "url": "xnxx.com"
   },
   {
     "name": "Amazon",
@@ -98,10 +90,6 @@
   {
     "name": "VK",
     "url": "vk.com"
-  },
-  {
-    "name": "xHamster",
-    "url": "xhamster.com"
   },
   {
     "name": "Weather",

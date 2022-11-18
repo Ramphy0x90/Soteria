@@ -31,12 +31,11 @@ public class DataConfig {
     /**
      * This commandline is used to generate default entities
      * and roles for Soteria, it also creates a default admin user (root)
-     *
-     * @param entityRepository
-     * @param roleRepository
-     * @param userRepository
-     * @param credentialRepository
-     * @return
+     * @param entityRepository Entity repository
+     * @param roleRepository Role repository
+     * @param userRepository User repository
+     * @param credentialRepository Credential repository
+     * @return args
      */
     @Bean
     CommandLineRunner commandLineRunner(EntityRepository entityRepository,
