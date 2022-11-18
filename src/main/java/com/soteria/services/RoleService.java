@@ -28,7 +28,6 @@ public class RoleService {
 
     /**
      * Get all roles
-     *
      * @return List<Role>
      */
     public List<Role> getRoles() {
@@ -37,7 +36,6 @@ public class RoleService {
 
     /**
      * Get single role by id
-     *
      * @param id Role id
      * @return Role
      */
@@ -47,7 +45,6 @@ public class RoleService {
 
     /**
      * Get role by name
-     *
      * @param name Role name
      * @return Role
      */
@@ -57,7 +54,6 @@ public class RoleService {
 
     /**
      * Add role
-     *
      * @param role New role object
      * @return Role
      */
@@ -73,7 +69,6 @@ public class RoleService {
 
     /**
      * Update role name
-     *
      * @param id Role id
      * @param name New role name
      * @return Role
@@ -93,7 +88,6 @@ public class RoleService {
 
     /**
      * Delete role by given id
-     *
      * @param id Role id
      */
     public void deleteRole(Long id) {

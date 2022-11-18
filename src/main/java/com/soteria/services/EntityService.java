@@ -24,7 +24,6 @@ public class EntityService {
 
     /**
      * Get all entities
-     *
      * @return List<Entity>
      */
     public List<Entity> getEntities() {
@@ -43,7 +42,6 @@ public class EntityService {
 
     /**
      * Delete entity by given id
-     *
      * @param entityId Entity id
      */
     public void removeEntity(Long entityId) {

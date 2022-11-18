@@ -29,7 +29,6 @@ public class UserService {
 
     /**
      * Get all users in Soteria
-     *
      * @return List<User>
      */
     public List<User> getUsers() {
@@ -38,7 +37,6 @@ public class UserService {
 
     /**
      * Get user by given id
-     *
      * @param id User id
      * @return User
      */
@@ -48,7 +46,6 @@ public class UserService {
 
     /**
      * Get user by username
-     *
      * @param userName User username
      * @return User
      */
@@ -61,7 +58,6 @@ public class UserService {
      * Add user. If the new user has the same
      * username of an existing user, the new user
      * will not be created
-     *
      * @param user User
      * @return User
      */
@@ -79,7 +75,6 @@ public class UserService {
      * Update user data. The username can be updated only
      * if the username specified does not exist and the password
      * can be updated if is not empty
-     *
      * @param id User id
      * @param userName New username
      * @param password New password
@@ -106,7 +101,6 @@ public class UserService {
 
     /**
      * Delete user by given id
-     *
      * @param id User id
      */
     public void removeUser(Long id) {
