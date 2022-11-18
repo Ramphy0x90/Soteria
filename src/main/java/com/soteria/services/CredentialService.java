@@ -62,7 +62,6 @@ public class CredentialService {
         );
 
         if(checkCredentialExists.isPresent()) {
-            System.out.println(checkCredentialExists);
             throw new CredentialAlreadyExists("Credential for this entity already exists");
         }
 
