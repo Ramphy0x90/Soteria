@@ -4,6 +4,7 @@ import com.soteria.exceptions.credential.CredentialAlreadyExists;
 import com.soteria.exceptions.credential.CredentialNotFound;
 import com.soteria.models.Credential;
 import com.soteria.models.User;
+import com.soteria.payload.CredentialDTO;
 import com.soteria.repositories.CredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,10 +78,9 @@ public class CredentialService {
      * @param credential Credential
      * @return Credential
      */
-    public Credential updateCredential(Long userId, Credential credential) {
-        Credential updatedCredential = credentialRepository.findCredentialByEntityIdAndUserId(
-                credential.getEntity().getId(),
-                userId
+    public Credential updateCredential(Long userId, Long credentialId, CredentialDTO credential) {
+        Credential updatedCredential = credentialRepository.findById(
+                credentialId
         ).orElseThrow(() -> new CredentialNotFound("Credential not found"));
 
         updatedCredential.setUserName(credential.getUserName());

@@ -34,7 +34,7 @@ export class CredentialService {
 
   updateCredential(credential: Credential): Observable<any> {
     return this.httpClient.put(
-      `${environment.server}/credential/update`, credential, this.httpOptions
+      `${environment.server}/credential/update/${credential.id}`, credential, this.httpOptions
     );
   }
 
