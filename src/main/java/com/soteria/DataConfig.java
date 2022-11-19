@@ -14,12 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +44,11 @@ public class DataConfig {
         // Object mapper to read json file and get entities
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
+        InputStream inputStream = getClass().getResourceAsStream("/static/entities.default.json");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         // Get entities from json file
         List<Entity> entities = objectMapper.readValue(
-                new File(new ClassPathResource("static/entities.default.json").getFile().toURI()),
+                reader,
                 new TypeReference<>(){}
         );
 
