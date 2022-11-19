@@ -40,7 +40,10 @@ export class HomeAppComponent implements OnInit {
       password: ''
     };
 
+    console.log(this.credentialForm)
+
     if(this.credentialForm !== undefined) {
+      console.log("ada")
       this.credentialForm.form.resetForm();
     }
   }
@@ -70,18 +73,23 @@ export class HomeAppComponent implements OnInit {
   saveCredential(credentialForm: CredentialForm): void {
     this.credentialForm = credentialForm;
     let credential: Credential = credentialForm.data;
+    let form = credentialForm.form;
 
     if(this.credentialFormMode == 1) {
-      this.credentialService.addCredential(credential).subscribe({
-        next: () => {
-          this.initCredential();
-          this.fetchCredentials();
-          this.toastr.success('Credential created');
-        },
-        error: (err: any) => {
-          this.toastr.error(err.error);
-        }
-      });
+      if(form.valid) {
+        this.credentialService.addCredential(credential).subscribe({
+          next: () => {
+            this.initCredential();
+            this.fetchCredentials();
+            this.toastr.success('Credential created');
+          },
+          error: (err: any) => {
+            this.toastr.error(err.error);
+          }
+        });
+      } else {
+        this.toastr.error('Invalid data');
+      }
     } else if(this.credentialFormMode == 2) {
       this.credentialService.updateCredential(credential).subscribe({
         next: () => {
