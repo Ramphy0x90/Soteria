@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Credential } from 'src/app/models/credential';
 import { CredentialForm } from 'src/app/models/credential-form';
 import { CredentialService } from 'src/app/services/credential.service';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home-app',
@@ -21,7 +21,9 @@ export class HomeAppComponent implements OnInit {
 
   selectedCredential!: Credential;
 
-  constructor(private userService: UserService, private credentialService: CredentialService) { }
+  constructor(private userService: UserService,
+    private credentialService: CredentialService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.fetchCredentials();
@@ -45,7 +47,7 @@ export class HomeAppComponent implements OnInit {
 
   fetchCredentials(): void {
     this.credentialService.getCredentials().subscribe({
-      next: (data) => {
+      next: (data: Credential[]) => {
         this.credentials = data;
         this.selectedCredential = this.credentials[0];
       }
@@ -71,21 +73,23 @@ export class HomeAppComponent implements OnInit {
 
     if(this.credentialFormMode == 1) {
       this.credentialService.addCredential(credential).subscribe({
-        next: (data) => {
+        next: () => {
           this.initCredential();
           this.fetchCredentials();
+          this.toastr.success('Credential created');
         },
-        error: (err) => {
-          console.log(err);
+        error: (err: any) => {
+          this.toastr.error(err.error);
         }
       });
     } else if(this.credentialFormMode == 2) {
       this.credentialService.updateCredential(credential).subscribe({
-        next: (data) => {
+        next: () => {
           this.fetchCredentials();
+          this.toastr.success('Credential updated');
         },
-        error: (err) => {
-          console.log(err);
+        error: (err: any) => {
+          this.toastr.error(err.error);
         }
       });
     }
@@ -96,6 +100,7 @@ export class HomeAppComponent implements OnInit {
       this.credentialService.deleteCredential(this.selectedCredential.id).subscribe({
         next: () => {
           this.fetchCredentials();
+          this.toastr.success('Credential deleted');
         }
       });
     }
