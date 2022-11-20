@@ -40,10 +40,7 @@ export class HomeAppComponent implements OnInit {
       password: ''
     };
 
-    console.log(this.credentialForm)
-
     if(this.credentialForm !== undefined) {
-      console.log("ada")
       this.credentialForm.form.resetForm();
     }
   }

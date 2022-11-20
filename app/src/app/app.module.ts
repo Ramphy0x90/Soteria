@@ -20,6 +20,7 @@ import { UsernamePipe } from './pipes/username.pipe';
 import { PasswordStrengthPipe } from './pipes/password-strength.pipe';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
   ],
   providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
