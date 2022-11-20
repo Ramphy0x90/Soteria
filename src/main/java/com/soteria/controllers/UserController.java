@@ -69,7 +69,7 @@ public class UserController {
      * @param userDTO user data
      * @return ResponseEntity<User>
      */
-    @PostMapping("sign-in")
+    @PostMapping("/sign-in")
     public ResponseEntity<User> registerUser(@RequestBody UserDTO userDTO) {
         Role role = roleService.getRole("ROLE_STANDARD");
         String userName = userDTO.getUserName();

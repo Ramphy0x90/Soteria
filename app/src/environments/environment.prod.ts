@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  server: 'http://soteria-api.ramphy-svr.ch/api/v1'
 };
