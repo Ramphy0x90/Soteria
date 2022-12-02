@@ -67,4 +67,12 @@ public class CredentialController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping(path = "/decrypt")
+    public ResponseEntity<String> decryptCredentialPassword(@RequestHeader("Authorization") String token,
+                                                            @RequestBody String password) {
+        Long userId = jwtTokenProvider.getUserIdFromJwt(token);
+
+        return new ResponseEntity<>(credentialService.decrypt(password, userId), HttpStatus.OK);
+    }
 }
