@@ -43,4 +43,10 @@ export class CredentialService {
       `${environment.server}/credential/delete/${credentialId}`
     );
   }
+
+  decryptCredentialPassword(credentialPassword: string): Observable<any> {
+    return this.httpClient.post(
+      `${environment.server}/credential/decrypt/`, {password: credentialPassword}, this.httpOptions
+    );
+  }
 }
