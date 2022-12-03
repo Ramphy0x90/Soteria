@@ -72,7 +72,8 @@ public class CredentialController {
     public ResponseEntity<String> decryptCredentialPassword(@RequestHeader("Authorization") String token,
                                                             @RequestBody String password) {
         Long userId = jwtTokenProvider.getUserIdFromJwt(token);
+        String clearPassword = credentialService.decrypt(password, userId);
 
-        return new ResponseEntity<>(credentialService.decrypt(password, userId), HttpStatus.OK);
+        return ResponseEntity.ok().body(clearPassword);
     }
 }
